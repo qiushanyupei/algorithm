@@ -1,2 +1,17 @@
 通过相邻元素两两比较，把较大的元素逐步“冒”到右边。
 每一轮比较后，当前未排序部分的最大值会被移到末尾。
+较优代码：
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n-1):  # 一共 n-1 轮
+        swapped = False
+        for j in range(n-1-i):  # 每轮比较到未排序的最后
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]  # 交换
+                swapped = True
+        if not swapped:  # 如果一轮没有交换，提前结束
+            break
+    return arr
+
+print(bubble_sort([5, 3, 8, 4, 2]))
+# 输出: [2, 3, 4, 5, 8]
